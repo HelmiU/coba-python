@@ -1,0 +1,45 @@
+import datetime
+
+import socket    
+import operator
+
+#main
+ip2 ='192.168.43.207'
+#ip2 = map_network.ip()
+#print (ip2)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((ip2,8080))
+soal = s.recv(1024)
+print (soal)
+char1 = soal[0]
+char2 = soal[1]
+char3 = soal[5]
+char4 = soal[6]
+combine1 = char1 + char2
+combine2 = char3 + char4
+operasi = soal[3]
+print ('jawabannya')
+if operasi == '+':
+	jawaban = int(combine1) + int(combine2)	
+	print(jawaban)
+elif operasi == '-':
+	jawaban = int(combine1) - int(combine2)
+	print(jawaban)
+elif operasi == '*':
+	jawaban = int(combine1) * int(combine2)
+	print(jawaban)
+elif operasi == '%':
+	jawaban = int(combine1) % int(combine2)
+	print(jawaban)
+s.send(str(jawaban))
+respon = s.recv(1024)
+print(respon)
+pem = ("jawaban anda benar")
+if respon == pem :
+	print("mulai terhubung dengan server")
+	s.close()
+else :
+	print("gagal terhubung dengan client")
+	s.close()
+s.close()
+
