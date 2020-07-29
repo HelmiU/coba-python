@@ -15,31 +15,63 @@ char1 = soal[0]
 char2 = soal[1]
 char3 = soal[5]
 char4 = soal[6]
+
 combine1 = char1 + char2
 combine2 = char3 + char4
 operasi = soal[3]
 print ('jawabannya')
+jawaban = ''
 if operasi == '+':
 	jawaban = int(combine1) + int(combine2)	
 	print(jawaban)
+	s.send(str(jawaban))
+	respon = s.recv(1024)
+	print(respon)
+	pem = ("jawaban anda benar")
+	if respon == pem :
+		print("mulai terhubung dengan server")
+		s.close()
+	else :
+		print("gagal terhubung dengan client")
+		s.close()
 elif operasi == '-':
 	jawaban = int(combine1) - int(combine2)
 	print(jawaban)
+	s.send(str(jawaban))
+	respon = s.recv(1024)
+	print(respon)
+	pem = ("jawaban anda benar")
+	if respon == pem :
+		print("mulai terhubung dengan server")
+		s.close()
+	else :
+		print("gagal terhubung dengan client")
+		s.close()
 elif operasi == '*':
 	jawaban = int(combine1) * int(combine2)
 	print(jawaban)
+	s.send(str(jawaban))
+	respon = s.recv(1024)
+	print(respon)
+	pem = ("jawaban anda benar")
+	if respon == pem :
+		print("mulai terhubung dengan server")
+		s.close()
+	else :
+		print("gagal terhubung dengan client")
+		s.close()
 elif operasi == '%':
 	jawaban = int(combine1) % int(combine2)
 	print(jawaban)
-s.send(str(jawaban))
-respon = s.recv(1024)
-print(respon)
-pem = ("jawaban anda benar")
-if respon == pem :
-	print("mulai terhubung dengan server")
-	s.close()
-else :
-	print("gagal terhubung dengan client")
-	s.close()
-s.close()
+	s.send(str(jawaban))
+	respon = s.recv(1024)
+	print(respon)
+	pem = ("jawaban anda benar")
+	if respon == pem :
+		print("mulai terhubung dengan server")
+		s.close()
+	else :
+		print("gagal terhubung dengan client")
+		s.close()
+
 
