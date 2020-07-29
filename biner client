@@ -1,0 +1,87 @@
+import datetime
+import socket    
+import operator
+
+ip2 ='192.168.43.207'
+#ip2 = map_network.ip()
+#print (ip2)
+bits = '1111111'
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((ip2,8080))
+biner = s.recv(1024)
+print (biner)
+biner1 = biner[0]
+biner2 = biner[1]
+biner3 = biner[2]
+biner4 = biner[3]
+biner5 = biner[4]
+biner6 = biner[5]
+biner7 = biner[6]
+operasi = biner[8]
+biner9 = biner[10]
+biner10 = biner[11]
+biner11 = biner[12]
+biner12 = biner[13]
+biner13 = biner[14]
+biner14 = biner[15]
+biner15 = biner[16]
+combine1 = biner1 + biner2 + biner3 + biner4 + biner5 + biner6 + biner7
+combine2 = biner9 + biner10 + biner11 + biner12 + biner13 + biner14 + biner15
+print(combine1)
+print(combine2)
+print ('jawabannya  ' ) 
+combineint = int(combine1)
+print (combineint)
+jawaban= ''
+if operasi == '&':
+	jawaban = int(combine1) & int(combine2)
+	print(jawaban)
+	s.send(str(jawaban))
+	respon = s.recv(1024)
+	print(respon)
+	pem = ("jawaban anda benar")
+	if respon == pem :
+		print("mulai terhubung dengan server")
+		s.close()
+	else :
+		print("gagal terhubung dengan client")
+		s.close()
+elif operasi == '|':
+	jawaban = int(combine1) | int(combine2)
+	print(jawaban)
+	s.send(str(jawaban))
+	respon = s.recv(1024)
+	print(respon)
+	pem = ("jawaban anda benar")
+	if respon == pem :
+		print("mulai terhubung dengan server")
+		s.close()
+	else :
+		print("gagal terhubung dengan client")
+		s.close()
+elif operasi == '^':
+	jawaban = int(combine1) ^ int(combine2)
+	print(jawaban)
+	s.send(str(jawaban))
+	respon = s.recv(1024)
+	print(respon)
+	pem = ("jawaban anda benar")
+	if respon == pem :
+		print("mulai terhubung dengan server")
+		s.close()
+	else :
+		print("gagal terhubung dengan client")
+		s.close()
+#jawabanbin1= '{0:0{1}b}'.format(int(jawaban),len(binum))
+#s.send(str(jawaban))
+#respon = s.recv(1024)
+#print(respon)
+#pem = ("jawaban anda benar")
+#if respon == pem :
+#	print("mulai terhubung dengan server")
+#	s.close()
+#else :
+	#print("gagal terhubung dengan client")
+	#s.close()
+#s.close()
+
